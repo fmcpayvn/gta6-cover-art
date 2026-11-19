@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Robo Vice — GTA-style Cover Studio</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <h1>Robo Vice</h1>
+    <p class="tagline">Turn your photos into a robot Vice City cover. Everything stays on this machine — no uploads, no network.</p>
+
+    <label class="field">Your photos
+      <input id="upload" type="file" accept="image/*" multiple>
+      <span class="hint">Or use the three robot samples already loaded.</span>
+    </label>
+
+    <fieldset>
+      <legend>Layout</legend>
+      <div id="layouts" class="chips"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Neon grade</legend>
+      <div id="grades" class="chips"></div>
+    </fieldset>
+
+    <label class="field">Title
+      <input id="caption" type="text" maxlength="24" value="ROBO VICE">
+    </label>
+    <label class="field">Subtitle (neon script)
+      <input id="subtitle" type="text" maxlength="40" value="steel city nights">
+    </label>
+
+    <fieldset>
+      <legend>Panel <span id="panelLabel">Panel 1 of 4</span></legend>
+      <div id="panelDots" class="dots"></div>
+      <label class="field">Photo in this panel
+        <select id="panelPhoto"></select>
+      </label>
+      <label class="field">Zoom <input id="panelZoom" type="range" min="1" max="3" step="0.05" value="1.15"></label>
+      <label class="field">Position X <input id="panelX" type="range" min="0" max="100" step="1" value="50"></label>
+      <label class="field">Position Y <input id="panelY" type="range" min="0" max="100" step="1" value="50"></label>
+      <p class="hint">Tip: click a panel on the cover and drag it to move the photo; scroll over it to zoom.</p>
+    </fieldset>
+
+    <fieldset class="toggles">
+      <legend>Finishing</legend>
+      <label><input id="titleBlock" type="checkbox" checked> Title block</label>
+      <label><input id="badge" type="checkbox" checked> Robo Vice badge</label>
+      <label><input id="grain" type="checkbox" checked> Film grain</label>
+      <label><input id="vignette" type="checkbox" checked> Vignette</label>
+    </fieldset>
+
+    <div class="actions">
+      <button id="shuffle" type="button">Shuffle photos</button>
+      <button id="undo" type="button" disabled>Undo</button>
+      <button id="redo" type="button" disabled>Redo</button>
+    </div>
+    <button id="exportAll" type="button" class="primary">Export all 3 sizes (PNG)</button>
+    <p class="hint">Saves 1080 × 1080, 1080 × 1350 and 1920 × 1080 in one step.</p>
+    <p id="status" role="status"></p>
+  </section>
+  <section class="preview" id="previewBox" aria-label="Cover preview">
+    <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
+  </section>
+</main>
+<div id="test" hidden></div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
